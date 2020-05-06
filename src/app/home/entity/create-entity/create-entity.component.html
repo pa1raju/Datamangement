@@ -1,0 +1,125 @@
+<!-- <h4 style="text-align: center;" class="fill-remaining-space">Create a Entity
+</h4>
+    
+  
+  
+  <div class="container" *ngIf="!post; else forminfo" novalidate> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Entityid" formControlName="email">
+        <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+          {{ getErrorEmail() }}
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="!name.valid && name.touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-element">
+        <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="description"></textarea>
+        <mat-error *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
+          Required field, must be between 5 and 10 characters.
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="category" formControlName="password">
+         <mat-hint>Choose a password of at least eight characters, one uppercase letter and one number</mat-hint> 
+        <mat-error *ngIf="!formGroup.controls['password'].valid && formGroup.controls['password'].touched">
+          {{ getErrorPassword() }}
+        </mat-error>
+      </mat-form-field>
+  
+      <div class="form-element">
+        <mat-checkbox formControlName="validate" value="1">Name min. 3 characters</mat-checkbox>
+      </div>
+  
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+      </div>
+  
+    </form>
+  </div>
+  
+  <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template> -->
+
+
+<!-- Card container that binds all togather -->  
+<mat-card>  
+    <!-- Title of an Card -->  
+    <mat-card-title>  
+        Create Entity
+    </mat-card-title>  
+  
+    <!-- Actual content starts from here -->  
+    <mat-card-content>  
+        <form [formGroup]="assetForm" class="container">
+            <mat-form-field appearance="outline">
+                <mat-label>Enter Asset Name</mat-label>
+                <input matInput placeholder="Asset Name" formControlName="AssetName">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                    <mat-label>Enter Tag Name</mat-label>
+                    <input matInput placeholder="Tag Name" formControlName="Tag">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                  <mat-label>Enter Sensor Topics</mat-label>
+                  <input matInput placeholder="Sensor Topics" formControlName="Topic">
+                </mat-form-field>
+                
+              <mat-form-field appearance="outline">
+                <mat-label>Enter Scheduled Maintenance Date</mat-label>
+                <input matInput placeholder="Scheduled Date" formControlName="sdate">
+              </mat-form-field>
+                <!-- <app-file-upload formControlName="image"></app-file-upload> -->
+              <!--   <div>
+                    <a href="#" data-toggle="tooltip" data-placement="right"
+                      title="Enter the attributes of a participant">Dynamic Attributes</a>
+                </div> -->
+                <!-- <mat-label>Dynamic Attributes</mat-label>
+                <div formArrayName="dynamicFields">
+                        
+                        <div *ngFor="let itemrow of assetForm.controls['dynamicFields'].controls; let i=index"
+                          [formGroupName]="i">
+                          <mat-form-field appearance="outline" class="dynamic_field">
+                              <mat-label>Enter Asset Field Name</mat-label>
+                              <input matInput placeholder="Asset Filed Name" formControlName="assetFieldName">
+                            </mat-form-field>
+                            <span>&nbsp;</span>
+                            <span>&nbsp;</span>
+                            <mat-form-field appearance="outline" class="dynamic_field">
+                                <mat-label>Enter Asset Field Value</mat-label>
+                                <input matInput placeholder="Asset Field Value" formControlName="assetFieldValue">
+                              </mat-form-field>
+                              <span>&nbsp;</span>
+                              <span>&nbsp;</span>
+                              <button mat-flat-button (click)="addNewRow()" color="primary">+</button>
+                              <span>&nbsp;</span>
+                              <span>&nbsp;</span>
+                              <button  *ngIf="assetForm.controls.dynamicFields.controls.length > 1" mat-flat-button  (click)="deleteRow(i)" color="primary">-</button>
+                            <p></p>
+                            <div *ngIf="participantSubmitted && itemrow.get('pattributeName').errors">
+                              <p *ngIf="itemrow.get('pattributeName').errors.whitespace">space is not allowed</p>
+                              <p *ngIf="itemrow.get('pattributeName').errors.required">field requirued</p> 
+                            </div>
+                           
+                        </div>
+                  </div> -->
+                  <div class="button-row">
+                        <button mat-raised-button color="primary" (click)="createAssetEntity()">Create Asset</button>
+                        <button mat-raised-button color="primary" (click)="resetForm()">Reset</button>
+                        <!-- <button mat-raised-button color="primary">Add/Edit Rules</button> -->
+                        <!-- <button mat-raised-button color="primary">Publish Asset</button> -->
+                </div>
+          </form>
+    </mat-card-content>  
+</mat-card>  

@@ -1,0 +1,22 @@
+<div>
+    <mat-card fxFlexAlign="center">
+        <mat-card-title>Login to Datamangement</mat-card-title>
+        <mat-card-content>
+            <form (keyup.enter)="login(email,password)">
+                <mat-form-field>
+                    <input matInput placeholder="Email" name="email" [(ngModel)]="email" autocomplete="username email">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Password" name="password" [(ngModel)]="password"
+                        autocomplete="current password">
+                </mat-form-field>
+            </form>
+            <mat-error></mat-error>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" class="login-feild" (click)="login(email,password)"
+                type="submit">Login</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

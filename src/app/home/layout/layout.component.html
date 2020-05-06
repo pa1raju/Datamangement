@@ -1,0 +1,96 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1>Apache Atlas</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/entities'"> Entities </a>
+        <a mat-button [routerLink]="'/create-entity'"> Create Entity </a>
+        <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+        <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+        <a mat-button [routerLink]="'/activities'"> Activities </a>
+        <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+  
+      </div>
+    </mat-toolbar-row>
+  
+    <!-- <mat-toolbar-row>
+        <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+      </mat-toolbar-row> -->
+  </mat-toolbar>
+  
+  
+  <mat-sidenav-container>
+  
+    <mat-sidenav #sidenav mode="side">
+  
+      <mat-tab-group>
+        <mat-tab label="Search"> 
+          <mat-nav-list>
+        
+            <a mat-list-item>
+              <span style="padding: 0 5px;">Terms</span><mat-slide-toggle [formControl]="autoRenew" (change)="onChange()"></mat-slide-toggle> <span style="padding: 0 5px;">Category</span> 
+            </a>
+      
+            <a mat-list-item [routerLink]="'entity/entities'"> Entities </a>
+            <a mat-list-item [routerLink]="'entity/create-entity'"> Create Entity </a>
+            <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+            <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
+            <a mat-list-item [routerLink]="'/activities'"> Activities </a>
+            <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
+          
+          <!--   <p id="example-radio-group-label" style="padding: 0 16px;"> Upload</p>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="slectedCategory">
+        <mat-radio-button class="example-radio-button" *ngFor="let season of categories" [value]="season">
+          {{season}}
+        </mat-radio-button>
+      </mat-radio-group> 
+      <i class="material-icons"> cloud_upload </i>-->
+            <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+      
+          </mat-nav-list>
+        
+        
+        </mat-tab>
+  
+  
+        <mat-tab label="Taxanomy"> 
+          <mat-nav-list>
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+              <!-- This is the tree node template for leaf nodes -->
+              <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                <!-- use a disabled button to provide padding for tree leaf -->
+                <button mat-icon-button disabled></button>
+                {{node.name}}
+              </mat-tree-node>
+              <!-- This is the tree node template for expandable nodes -->
+              <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                <button mat-icon-button matTreeNodeToggle
+                        [attr.aria-label]="'toggle ' + node.name">
+                  <mat-icon class="mat-icon-rtl-mirror">
+                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                  </mat-icon>
+                </button>
+                {{node.name}}
+              </mat-tree-node>
+            </mat-tree>
+          </mat-nav-list>
+        </mat-tab>
+        <mat-tab label="Glosary"> Content 3 </mat-tab>
+      </mat-tab-group>
+  
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+  
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+<!--   <app-loader></app-loader> -->

@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .my-tooltip{
+    white-space: pre-line;
+  }
+
+  .text-align{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+  }
+  .filter{
+    display: flex;
+    width: 50%;
+  }
+
+  .details{
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }

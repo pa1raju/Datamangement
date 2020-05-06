@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
-import { FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormBuilder ,FormsModule} from '@angular/forms';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.css']
 })
-export class AppComponent {
+export class LayoutComponent implements OnInit {
+
+  
   title = "apache-atlas";
 
   slectedCategory: string;
@@ -18,11 +20,6 @@ export class AppComponent {
   onChange() {
     console.log(this.autoRenew.value);
   }
-
-
-
-
-
 
   data = {
     "guid": "2f341934-f18c-48b3-aa12-eaa0a2bfce85",
@@ -100,8 +97,18 @@ export class AppComponent {
   }
 
   hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  ngOnInit(){}
 
 }
+
+
+
+
+
+
+
+
+
 
 interface ExampleFlatNode {
   expandable: boolean;
@@ -141,3 +148,4 @@ const TREE_DATA: FoodNode[] = [
     ]
   },
 ];
+
